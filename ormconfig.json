@@ -1,0 +1,11 @@
+{
+   "type": "postgres",
+   "host": "172.21.0.3",
+   "port": 5432,
+   "username": "postgres",
+   "password": "user123",
+   "database": "transcendence",
+   "entities": [],
+    "migrations": "src",
+    "migrationsTableName": "custom_migration_table"
+ }
