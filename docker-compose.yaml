@@ -8,10 +8,12 @@ services:
             - POSTGRES_PASSWORD=user123
             - PGDATA=/data/postgres
             - POSTGRES_DB=transcendence
+        ports:
+            - 5432:5432
         volumes:
             - ./postgres:/data/postgres
         networks:
-            - nesjs-network
+            - nestjs-network
         restart: unless-stopped
     nestjs:
         container_name: nestjs
@@ -27,7 +29,7 @@ services:
         expose:
             - "443"
         networks:
-            - nesjs-network
+            - nestjs-network
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
@@ -46,11 +48,11 @@ services:
         ports:
             - "8080:80"
         networks:
-            - nesjs-network
+            - nestjs-network
         restart: unless-stopped
     
 networks:
-    nesjs-network:
+    nestjs-network:
         driver: bridge
 volumes:
     postgres:

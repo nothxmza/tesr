@@ -1,4 +1,5 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Put } from '@nestjs/common';
+import path = require('path/posix');
 import { AppService } from './app.service';
 
 @Controller()

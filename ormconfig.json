@@ -1,6 +1,6 @@
 {
    "type": "postgres",
-   "host": "172.21.0.3",
+   "host": "db",
    "port": 5432,
    "username": "postgres",
    "password": "user123",
@@ -8,7 +8,7 @@
    "synchronize": true,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/user/entity/**/*.ts"
    ],
    "migrations": [
       "src/migrations/**/*.ts"
@@ -17,7 +17,7 @@
       "src/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
+      "entitiesDir": "src/user/entity",
       "migrationsDir": "src/migrations",
       "subscribersDir": "src/subscriber"
    }
