@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './user/user.entity';
 import { Repository } from 'typeorm';
-import { addDataDto } from './addtesDto';
+import { AddDataDto } from './addtesDto';
+import { InjectRepository } from 'typeorm'
 
 @Injectable()
 export class AppService {
@@ -13,12 +14,11 @@ export class AppService {
 export class AddDatabas {
   constructor(
     @InjectRepository(User)
-    private DbRepository: Repository<User>
+    private dbRepository: Repository<User>
   ){
   }
 
-async addtes(ts:addDataDto): Promise <User> {
-  return  await this.DbRepository.save(ts);
-}
-
+  async addtes(ts: AddDataDto): Promise<User> {
+    return  await this.dbRepository.save(ts);
+  }
 }

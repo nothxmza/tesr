@@ -1,4 +1,5 @@
-export class addDataDto{
+
+export class AddDataDto{
    
   username: string;
 }

@@ -5,10 +5,11 @@ import { AppService } from "./app.service";
 import { User } from "./user/user.entity";
 import { AddDatabas } from "./app.service";
 import { addtes } from "./app.service";
-import { addDataDto } from "./addtesDto";
+import { AddDataDto } from "./addtesDto";
+import { AddDatabas } from "./app.service";
 
 
-@Controller()
+/*@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -24,8 +25,14 @@ export class AppController {
   async login42Redirect(@Req() req: Request): Promise<any>{
     return req.user
   }
+}*/
+@Controller('ts')
+export class tsController {
+  constructor(
+    private AddDatabas: AddDatabas
+  ){
 }
-  @pPost()
+  @Post()
   async addtes(
     @Body() addDataDto: AddDataDto
   ): Promise<User> {
