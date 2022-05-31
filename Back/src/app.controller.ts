@@ -1,13 +1,23 @@
-import { Controller, Get, Put } from '@nestjs/common';
-import path = require('path/posix');
-import { AppService } from './app.service';
+import { Controller, Get, UseGuards, HttpStatus, Req } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { Request } from "express";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get("/42")
+  @UseGuards(AuthGuard("42"))
+  async  login42(): Promise<any>{
+    return HttpStatus.OK;
+  }
+  
+
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @UseGuards(AuthGuard("42"))
+  async login42Redirect(@Req() req: Request): Promise<any>{
+    return req.user
   }
 }
+  

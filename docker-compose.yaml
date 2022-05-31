@@ -6,7 +6,6 @@ services:
         image: postgres
         environment:
             - POSTGRES_PASSWORD=user123
-            - PGDATA=/data/postgres
             - POSTGRES_DB=transcendence
         ports:
             - 5432:5432

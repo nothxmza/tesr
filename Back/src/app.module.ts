@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UsersModule } from './user/user.module';
-import { ApiController } from './api/api.controller';
-import { AuthModule } from './auth/auth.module';
+import { AppService } from './app.service';
+import {AuthStrategy}  from './auth/auth.strategy';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -15,11 +16,13 @@ import { AuthModule } from './auth/auth.module';
       password: 'user123',
       database: 'transcendence',
       synchronize: true,
-      logging: false,
+      logging: true,
       entities: [User],
-  }),UsersModule, AuthModule
+      autoLoadEntities: true,
+  }),UsersModule
   ],
-  controllers: [ApiController],
+  controllers: [AppController],
+  providers: [AppService, AuthStrategy]
 })
 
 export class AppModule {}
