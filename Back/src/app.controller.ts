@@ -2,6 +2,11 @@ import { Controller, Get, UseGuards, HttpStatus, Req } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { Request } from "express";
 import { AppService } from "./app.service";
+import { User } from "./user/user.entity";
+import { AddDatabas } from "./app.service";
+import { addtes } from "./app.service";
+import { addDataDto } from "./addtesDto";
+
 
 @Controller()
 export class AppController {
@@ -20,4 +25,11 @@ export class AppController {
     return req.user
   }
 }
-  
+  @pPost()
+  async addtes(
+    @Body() addDataDto: AddDataDto
+  ): Promise<User> {
+    return await this.AddDatabas.addtes(addDataDto);
+  }
+
+}
