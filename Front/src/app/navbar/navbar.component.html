@@ -4,8 +4,15 @@
 	</head>
 	<body>
 		<nav>
-		<a href="http://localhost:3000/42"> <button>Connection</button></a>
+		<a href="{{ button }}"> <button>Connection</button></a>
 	</nav>
+	<span class="center">
+		<p>
+			<button (click)="onmore()">{{ buttontest }}</button>
+			<img [src]="like" alt="sheeesh">
+		</p>
+	</span>
+	
 	
 	</body>
 	
