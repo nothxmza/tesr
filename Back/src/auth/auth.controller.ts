@@ -7,7 +7,6 @@ import { AuthService } from "./auth.service";
 export class AuthController {
 	constructor(private readonly authservice: AuthService){}
 
-
 	@Get("/42")
 	@UseGuards(AuthGuard("42"))
 	async  login42(): Promise<any>{
@@ -17,6 +16,6 @@ export class AuthController {
 	@Get()
 	@UseGuards(AuthGuard("42"))
 	async login42Redirect(@Req() req: Request): Promise<any>{
-	  return req.user
+	return this.authservice.Creatauth(req.user)
 	}
 }

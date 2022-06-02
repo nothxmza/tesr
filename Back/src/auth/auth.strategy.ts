@@ -12,7 +12,9 @@ export class AuthStrategy extends PassportStrategy(Strategy,"42"){
 			clientID: process.env.clientId,
 			clientSecret: process.env.clientSecret,
 			callbackURL: "http://localhost:3000",
-			
+			profileFields:{
+				'login' : 'login'
+			}
 		});
 	}
 	async validate (
@@ -20,9 +22,11 @@ export class AuthStrategy extends PassportStrategy(Strategy,"42"){
 		refreshToken: string,
 		profile: Profile,
 		done:(err: any, user:any, info?: any) => void): Promise<any>{
-			
+			const user = {
+				login: profile.login
+			}
 			const payload = {
-				profile,
+				user,
 				accessToken,
 			};
 			done(null,payload);

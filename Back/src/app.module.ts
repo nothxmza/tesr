@@ -6,23 +6,11 @@ import { AppController } from './app.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
-import { Auth } from './auth/auth.entity';
+import { DB_module } from './db_info/db.info.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'db',
-      port: 5432,
-      username: 'postgres',
-      password: 'user123',
-      database: 'transcendence',
-      synchronize: true,
-      logging: true,
-      entities: [Auth],
-      autoLoadEntities: true,
-  }), AuthModule
-  ],
+  imports: [DB_module , AuthModule, UserModule],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthStrategy, AuthService]
 })
